@@ -1,0 +1,13 @@
+<div>
+  <% if @products %>
+    <%= @products.each do |p| %>
+      Name: <%= p.name %> | <%= image_tag(p.image) %>
+      <ul>
+        <li>Description: <%= p.description %></li>
+        <li>$<%= p.cost %></li>
+      </ul>
+    <% end %>
+  <% else %>
+    <h2>There are no products yet!</h2>
+  <% end %>
+</div>
