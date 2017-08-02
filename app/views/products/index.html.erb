@@ -1,6 +1,6 @@
 <div>
   <% if @products %>
-    <%= @products.each do |p| %>
+    <% @products.each do |p| %>
       Name: <%= p.name %> | <%= image_tag(p.image) %>
       <ul>
         <li>Description: <%= p.description %></li>
