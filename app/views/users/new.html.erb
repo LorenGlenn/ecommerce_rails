@@ -6,6 +6,7 @@
   <%= f.password_field :password %>
   <%= f.label :password_confirmation %>
   <%= f.password_field :password_confirmation %>
-  <%= f.submit "Sign Up" %>
+  <%= f.label "Upload an avatar" %>
   <%= f.file_field :avatar, as: :file %>
+  <%= f.submit "Sign Up" %>
 <% end %>
