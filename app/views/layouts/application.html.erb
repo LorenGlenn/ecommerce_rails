@@ -9,22 +9,27 @@
 
   <body>
     <nav>
-      <div class="nav-wrapper">
-        <% if current_user %>
-        <span class="nav-sides"><%= current_user.email %> |</span>   <%= image_tag(current_user.avatar.url(:thumb), :class => "nav-thumb") %><span class="nav-sides"> | <%= link_to "Sign out", '/signout' %></span>
-        <% else %>
-        <%= link_to "Sign up", 'signup' %> | <%= link_to "Sign in", '/signin' %>
-        <% end %>
-        <ul class="left hide-on-med-and-down">
+      <div class="nav-wrapper teal lighten-3">
+        <div class="right valign-wrapper" id="nav-login">
+          <% if current_user %>
+            <%= current_user.email %>
+            <span class="separator">|</span>
+            <%= image_tag(current_user.avatar.url(:thumb), :class => "nav-thumb") %>
+            <span class="separator">|</span>
+            <%= link_to "Sign out", '/signout' %>
+          <% else %>
+            <%= link_to "Sign up", 'signup' %>
+            <span class="separator">|</span>
+            <%= link_to "Sign in", '/signin' %>
+          <% end %>
+        </div>
+        <ul class="left hide-on-sm-and-down">
           <li class="active"><a href="/products">Home</a></li>
           <li><a href="/about">About</a></li>
           <li><a href="/contact">JavaScript</a></li>
         </ul>
       </div>
     </nav>
-    <div id="navbar" class="card-panel teal lighten-3">
-
-    </div>
 
     <%= flash[:alert] %>
     <%= flash[:notice] %>

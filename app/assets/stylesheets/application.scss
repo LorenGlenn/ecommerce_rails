@@ -21,11 +21,14 @@
 }
 
 .nav-thumb {
-  border-radius: 80px;
-
+  border-radius: 50px;
+  margin: 0px 8px 0 8px;
 }
 
-.nav-sides {
-  position: relative;
-  top: -9px;
+#nav-login {
+  padding-right: 8px;
+}
+
+.separator {
+  padding: 0 5px 0 5px;
 }
