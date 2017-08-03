@@ -13,6 +13,7 @@
  *= require_tree .
  *= require_self
  */
+ @import "materialize";
 
 #navbar {
   margin-top: 0;
@@ -25,5 +26,6 @@
 }
 
 .nav-sides {
-  margin-bottom: 10px;
+  position: relative;
+  top: -9px;
 }

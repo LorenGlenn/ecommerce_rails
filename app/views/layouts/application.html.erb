@@ -3,19 +3,27 @@
   <head>
     <title>EcommerceRails</title>
     <%= csrf_meta_tags %>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.1/css/materialize.min.css">
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.1/js/materialize.min.js"></script>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
+    <nav>
+      <div class="nav-wrapper">
+        <% if current_user %>
+        <span class="nav-sides"><%= current_user.email %> |</span>   <%= image_tag(current_user.avatar.url(:thumb), :class => "nav-thumb") %><span class="nav-sides"> | <%= link_to "Sign out", '/signout' %></span>
+        <% else %>
+        <%= link_to "Sign up", 'signup' %> | <%= link_to "Sign in", '/signin' %>
+        <% end %>
+        <ul class="left hide-on-med-and-down">
+          <li class="active"><a href="/products">Home</a></li>
+          <li><a href="/about">About</a></li>
+          <li><a href="/contact">JavaScript</a></li>
+        </ul>
+      </div>
+    </nav>
     <div id="navbar" class="card-panel teal lighten-3">
-      <% if current_user %>
-      <span class="nav-sides"><%= current_user.email %> |</span>   <%= image_tag(current_user.avatar.url(:thumb), :class => "nav-thumb") %><span class="nav-sides"> | <%= link_to "Sign out", '/signout' %></span>
-      <% else %>
-      <%= link_to "Sign up", 'signup' %> | <%= link_to "Sign in", '/signin' %>
-      <% end %>
+
     </div>
 
     <%= flash[:alert] %>
