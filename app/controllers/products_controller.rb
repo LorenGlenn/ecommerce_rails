@@ -1,5 +1,5 @@
 class ProductsController < ApplicationController
-  
+
   def index
     @products = Product.all
   end
@@ -18,6 +18,16 @@ class ProductsController < ApplicationController
       flash[:alert] = "There was a problem saving this product."
       redirect_to '/products/new'
     end
+  end
+
+  def destroy
+    @product = Product.find(params[:product_id])
+    if @product.destroy
+      flash[:notice] = "You successfully deleted the product!"
+      redirect_to "/products"
+    else
+      flash[:alert] = "There was a problem deleting this product!"
+      redirect_to "/products"
   end
 
   private
