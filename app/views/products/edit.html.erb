@@ -1,12 +1,2 @@
 <h1> Edit <%= @product.name %></h1>
-<%= form_for @product do |f| %>
-  <%= f.label "Name" %>
-  <%= f.text_field :name %>
-  <%= f.label "Description" %>
-  <%= f.text_field :description %>
-  <%= f.label "Cost" %>
-  <%= f.number_field :cost, step: 0.01 %>
-  <%= f.label "Image" %>
-  <%= f.file_field :image, as: :file %>
-  <%= f.submit "Save" %>
-<% end %>
+<%= render 'form' %>
