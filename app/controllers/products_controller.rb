@@ -20,19 +20,35 @@ class ProductsController < ApplicationController
     end
   end
 
+  def edit
+    @product = Product.find(params[:id])
+    render :edit
+  end
+
+  def update
+    @product = Product.find(params[:id])
+    if @product.update(product_params)
+      redirect_to products_path
+    else
+      render :edit
+    end
+  end
+
   def destroy
-    @product = Product.find(params[:product_id])
+    binding.pry
+    @product = Product.find(params[:id])
     if @product.destroy
       flash[:notice] = "You successfully deleted the product!"
       redirect_to "/products"
     else
       flash[:alert] = "There was a problem deleting this product!"
       redirect_to "/products"
+    end
   end
 
   private
 
   def product_params
-    params.require(:product).permit(:name, :cost, :description, :image)
+    params.require(:product).permit(:name, :cost, :description, :image, :id)
   end
 end

@@ -5,11 +5,17 @@
       <div class="col s12 m6">
         <div class="card blue-grey darken-1">
           <div class="card-content white-text">
-            <span class="card-title"> <%= p.name %> | <%= image_tag(p.image) %> </span>
+            <span class="card-title"> <%= p.name %> <%= image_tag(p.image.url(:medium)) %> </span>
             <ul>
               <li>Description: <%= p.description %></li>
               <li>$<%= p.cost %></li>
             </ul>
+            <div class="card-action">
+              <p>
+                <%= link_to "Edit", edit_product_path(p) %>
+                <%= link_to "Delete", product_path(p), :data => {:confirm => "You sure?", :method => "delete"} %>
+              </p>
+            </div>
           </div>
         </div>
       </div>
