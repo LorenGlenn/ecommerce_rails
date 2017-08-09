@@ -3,6 +3,7 @@ class User < ApplicationRecord
   validates_confirmation_of :password
   validates :email, :presence => true, :uniqueness => true
   before_save :encrypt_password
+  has_many :orders
 
   has_attached_file :avatar, styles: { medium: "300x300>", thumb: "50x50>" }, default_url: "/images/:style/missing.png"
   validates_attachment_content_type :avatar, content_type: /\Aimage\/.*\z/

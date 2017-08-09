@@ -1,13 +1,13 @@
 <div>
+  <div class="row">
   <% if @products %>
     <% @products.each do |p| %>
-    <div class="row">
-      <div class="col s4 m4">
-        <div class="card blue-grey darken-1">
+      <div class="col m4">
+        <div class="card blue-grey darken-1 hoverable">
           <div class="card-content white-text">
             <span class="card-title"><%= p.name %></span>
             <ul>
-              <li><%= image_tag(p.image.url(:medium)) %></li>
+              <li><%= image_tag(p.image, :class => "product-image") %></li>
               <li>Description: <%= p.description %></li>
               <li>$<%= p.cost %></li>
             </ul>
@@ -20,9 +20,9 @@
           </div>
         </div>
       </div>
-    </div>
+      <% end %>
+    <% else %>
+      <h2>There are no products yet!</h2>
     <% end %>
-  <% else %>
-    <h2>There are no products yet!</h2>
-  <% end %>
+  </div>
 </div>
