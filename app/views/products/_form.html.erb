@@ -5,6 +5,8 @@
   <%= f.text_field :description %>
   <%= f.label "Cost" %>
   <%= f.number_field :cost, step: 0.01 %>
+  <%= f.label "Stock" %>
+  <%= f.number_field :stock %>
   <%= f.label "Image" %>
   <%= f.file_field :image, as: :file %>
   <%= f.submit "Save" %>

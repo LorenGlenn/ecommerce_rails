@@ -8,6 +8,10 @@ class ApplicationController < ActionController::Base
     end
   end
 
+  def current_order
+    session[:order_id] ? Order.find(session[:order_id]) : Order.new
+  end
+
   def authorize
     if !current_user
       flash[:alert] = "You aren't authorized to visit that page."
