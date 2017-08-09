@@ -7,5 +7,6 @@ Rails.application.routes.draw do
   get '/signout' => 'sessions#destroy'
 
   resources :products
+  resources :order_items
   root "products#index"
 end
