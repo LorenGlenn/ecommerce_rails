@@ -6,6 +6,8 @@ Rails.application.routes.draw do
   post '/signin' => 'sessions#create'
   get '/signout' => 'sessions#destroy'
 
+  get '/cart' => 'orders#show'
+
   resources :products
   resources :order_items
   root "products#index"
