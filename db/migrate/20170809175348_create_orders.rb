@@ -1,8 +1,8 @@
 class CreateOrders < ActiveRecord::Migration[5.1]
   def change
     create_table :orders do |t|
-      t.integer :account_id
-      t.string :total
+      t.integer :user_id
+      t.integer :total, :default => 0
 
       t.timestamps
     end

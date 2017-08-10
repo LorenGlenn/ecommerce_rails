@@ -1,6 +1,7 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
   helper_method :current_user
+  helper_method :current_order
 
   def current_user
     if session[:user_id]
@@ -9,7 +10,13 @@ class ApplicationController < ActionController::Base
   end
 
   def current_order
-    session[:order_id] ? Order.find(session[:order_id]) : Order.create
+    if session[:order_id]
+      @current_order = Order.find(session[:order_id])
+    else
+      @current_order = current_user.orders.create
+      session[:order_id] = @current_order.id
+      @current_order
+    end
   end
 
   def authorize

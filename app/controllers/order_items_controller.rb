@@ -1,9 +1,12 @@
 class OrderItemsController < ApplicationController
   def create
     @product = Product.find(params[:order_item][:product_id])
+    @order = current_order
     @product.stock -= Integer(item_params[:quantity])
     @product.save
-    @order_item = current_order.order_items.create(item_params)
+    @order_item = @order.order_items.create(item_params)
+    @order.total += @product.cost * @order_item.quantity
+    @order.save
     redirect_to products_path
   end
 
