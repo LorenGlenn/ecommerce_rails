@@ -12,34 +12,36 @@
 
 <div class="container">
   <h3>Add Review:</h3>
-  <%= form_for @review do |f|  %>
+  <%= form_for @review, remote: true do |f|  %>
     <%= f.hidden_field :product_id, value: @product.id %>
     <%= f.hidden_field :user_id, value: @user.id %>
-    <%= f.number_field :score %>
+    <%= f.number_field :score, max: 10, min: 1 %>
     <%= f.text_field :content %>
     <%= f.submit "Add Review" %>
   <% end %>
-  <% if @reviews %>
-    <% @reviews.each do |r| %>
-    <%= r.score %><br>
-    <%= r.content %><br>
-    <% if r.comments %>
-      <% r.comments.each do |c| %>
-        <%= c.content %><br>
+  <div id="review-section">
+    <% if @reviews %>
+      <% @reviews.each do |r| %>
+      <%= r.score %><br>
+      <%= r.content %><br>
+      <% if r.comments %>
+        <% r.comments.each do |c| %>
+          <%= c.content %><br>
+        <% end %>
       <% end %>
+      <div class="well">
+        <h3>Add Comment:</h3>
+        <%= form_for @comment, remote: true do |f|  %>
+          <%= f.hidden_field :user_id, value: @user.id %>
+          <%= f.hidden_field :review_id, value: r.id %>
+          <%= f.text_field :content %>
+          <%= f.submit "Add Comment" %>
+        <% end %>
+      </div>
     <% end %>
-    <div class="well">
-      <h3>Add Comment:</h3>
-      <%= form_for @comment do |f|  %>
-        <%= f.hidden_field :user_id, value: @user.id %>
-        <%= f.hidden_field :review_id, value: r.id %>
-        <%= f.text_field :content %>
-        <%= f.submit "Add Comment" %>
-      <% end %>
-    </div>
+    <% else %>
+      <%= 'No reviews yet' %>
+    <% end %>
+  </div>
 
-  <% end %>
-  <% else %>
-    <%= 'No reviews yet' %>
-  <% end %>
 </div>

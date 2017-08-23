@@ -1,0 +1,1 @@
+$('#review-section').append('<%= @review.score %><br><%= @review.content %><div class="well"><h3>Add Comment:</h3><%= form_for @comment, remote: true do |f|  %><%= f.hidden_field :user_id, value: @user.id %><%= f.hidden_field :review_id, value: @review.id %><%= f.text_field :content %><%= f.submit "Add Comment" %><% end %></div>');
