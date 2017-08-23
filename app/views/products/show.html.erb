@@ -1,0 +1,29 @@
+<div class="card blue-grey darken-1 hoverable">
+  <div class="card-content white-text">
+    <span class="card-title"><%= @product.name %></span>
+    <ul>
+      <li><%= image_tag(@product.image, :class => "product-image") %></li>
+      <li>Description: <%= @product.description %></li>
+      <li>$<%= @product.cost %></li>
+      <li><%= @product.stock %> In stock</li>
+    </ul>
+  </div>
+</div>
+
+<div class="well">
+  <%= form_for @review do |f|  %>
+    <%= f.hidden_field :product_id, value: @product.id %>
+    <%= f.hidden_field :user_id, value: current_user.id %>
+    <%= f.number_field :score %>
+    <%= f.text_field :content %>
+    <%= f.submit "Add Review" %>
+  <% end %>
+  <% if @reviews %>
+    <% @reviews.each do |r| %>
+    <%= r.score %>
+    <%= r.content %>
+  <% end %>
+  <% else %>
+    <%= 'No reviews yet' %>
+  <% end %>
+</div>

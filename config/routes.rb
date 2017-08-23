@@ -10,5 +10,7 @@ Rails.application.routes.draw do
 
   resources :products
   resources :order_items
+  resources :reviews
+  resources :comments
   root "products#index"
 end

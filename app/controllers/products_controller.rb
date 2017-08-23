@@ -9,6 +9,13 @@ class ProductsController < ApplicationController
     @product = Product.new
   end
 
+  def show
+    @product = Product.find(params[:id])
+    @reviews = @product.reviews
+    @review = Review.new
+    binding.pry
+  end
+
   def create
     @product = Product.new(product_params)
     if @product.save
