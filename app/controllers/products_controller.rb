@@ -13,7 +13,8 @@ class ProductsController < ApplicationController
     @product = Product.find(params[:id])
     @reviews = @product.reviews
     @review = Review.new
-    binding.pry
+    @comment = Comment.new
+    @user = current_user
   end
 
   def create

@@ -1,7 +1,6 @@
 class ReviewsController < ApplicationController
   def create
     @review = Review.create(review_params)
-    binding.pry
     redirect_to product_path(review_params[:product_id])
   end
 
