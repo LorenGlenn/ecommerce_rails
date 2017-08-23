@@ -1,7 +1,7 @@
 class ProductsController < ApplicationController
 
   def index
-    @products = Product.all
+    @products = Product.where("stock > 0")
     @order_item = OrderItem.new
   end
 

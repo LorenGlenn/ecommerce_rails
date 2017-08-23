@@ -1,0 +1,22 @@
+
+  <div class="nav-wrapper teal lighten-3">
+    <div class="right valign-wrapper" id="nav-login">
+      <% if current_user %>
+        <%= current_user.email %>
+        <span class="separator">|</span>
+        <%= image_tag(current_user.avatar.url(:thumb), :class => "nav-thumb") %>
+        <span class="separator">|</span>
+        <%= link_to "Sign out", '/signout' %>
+        <span id="cart-totals">Cart: # of items: <%= current_order.order_items.length %>, Total: $<%= current_order.total %></span>
+      <% else %>
+        <%= link_to "Sign up", 'signup' %>
+        <span class="separator">|</span>
+        <%= link_to "Sign in", '/signin' %>
+      <% end %>
+    </div>
+    <ul class="left hide-on-sm-and-down">
+      <li class="active"><a href="/products">Home</a></li>
+      <li><a href="/about">About</a></li>
+      <li><a href="/contact">Contact</a></li>
+    </ul>
+  </div>

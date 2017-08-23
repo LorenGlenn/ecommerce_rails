@@ -8,10 +8,7 @@ class OrderItemsController < ApplicationController
     if @order.save
       @product.save
       flash[:notice] = "Item added to cart!"
-      respond_to do |format|
-        format.html { redirect_to products_path }
-        format.js
-      end
+      redirect_to products_path
     else
       flash[:notice] = "Item can't be added!"
       redirect_to products_path
