@@ -12,8 +12,10 @@ class ApplicationController < ActionController::Base
   def current_order
     if session[:order_id]
       @current_order = Order.find(session[:order_id])
+    elsif @current_user.orders.last.complete === false
+      @current_order = @current_user.orders.last
     else
-      @current_order = current_user.orders.create
+      @current_order = @current_user.orders.create
       session[:order_id] = @current_order.id
       @current_order
     end

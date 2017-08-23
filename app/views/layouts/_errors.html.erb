@@ -1,0 +1,14 @@
+<% if object.errors.any? %>
+  <div class="row">
+    <div class="col l12 m6">
+      <div class="card-panel grey lighten-2">
+        <h5>Oops there were some errors. Please try again:</h5>
+        <ul>
+          <% object.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+        </ul>
+      </div>
+    </div>
+  </div>
+<% end %>

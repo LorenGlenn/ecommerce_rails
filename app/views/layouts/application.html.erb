@@ -17,7 +17,7 @@
             <%= image_tag(current_user.avatar.url(:thumb), :class => "nav-thumb") %>
             <span class="separator">|</span>
             <%= link_to "Sign out", '/signout' %>
-            Cart: # of items: <%= current_order.order_items.length %>, Total: $<%= current_order.total %>
+            <span id="cart-totals">Cart: # of items: <%= current_order.order_items.length %>, Total: $<%= current_order.total %></span>
           <% else %>
             <%= link_to "Sign up", 'signup' %>
             <span class="separator">|</span>

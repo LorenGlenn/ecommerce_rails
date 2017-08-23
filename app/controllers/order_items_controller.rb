@@ -3,11 +3,19 @@ class OrderItemsController < ApplicationController
     @product = Product.find(params[:order_item][:product_id])
     @order = current_order
     @product.stock -= Integer(item_params[:quantity])
-    @product.save
     @order_item = @order.order_items.create(item_params)
     @order.total += @product.cost * @order_item.quantity
-    @order.save
-    redirect_to products_path
+    if @order.save
+      @product.save
+      flash[:notice] = "Item added to cart!"
+      respond_to do |format|
+        format.html { redirect_to products_path }
+        format.js
+      end
+    else
+      flash[:notice] = "Item can't be added!"
+      redirect_to products_path
+    end
   end
 
   def destroy
