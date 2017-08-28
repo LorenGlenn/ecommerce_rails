@@ -2,6 +2,9 @@ class ReviewsController < ApplicationController
   def create
     @product = Product.find(review_params[:product_id])
     @review = @product.reviews.new(review_params)
+    binding.pry
+    @product.score = (@product.score + review_params[:score].to_i) / @product.reviews.length
+    @product.save
     @comment = Comment.new
     @user = current_user
     if @review.save
