@@ -1,24 +1,14 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+This is a work in progress practice Rails project using a number of different techniques and technologies to help me demonstrate and continually practice my coding skills. Features include:
 
-Things you may want to cover:
+* User authentication with Devise
 
-* Ruby version
+* AJAX for dynamic pages
 
-* System dependencies
+* User ability to comment and rate products
 
-* Configuration
+* User shopping cart
 
-* Database creation
+* Practice with Materialize CSS Framework
 
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
