@@ -12,3 +12,5 @@ This is a work in progress practice Rails project using a number of different te
 
 * Practice with Materialize CSS Framework
 
+* PostgreSQL database functionality
+
